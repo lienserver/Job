@@ -14,6 +14,8 @@ public abstract class Job
 	public abstract void giveJob(Player player);
 	public abstract Location getSpawnLocation();
 	public abstract void setSpawnLocation(Location loc);
+	public abstract Location getTutorialLocation();
+	public abstract void setTutorialLocation(Location loc);
 	public abstract Job getParent();
 	public abstract void setParent();
 	public abstract Map<Stat,Double> getDefaultStats();
@@ -30,8 +32,4 @@ public abstract class Job
 	public abstract void setSuffix(String suffix); 
 	public abstract String getTribe();
 	public abstract String setTribe(String tribe);
-}
-enum Stat
-{
-	
 }
