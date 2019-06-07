@@ -47,11 +47,21 @@ public class part_job extends Job {
 
     public List<String> getPermission(){return perm;}
 
-    //이해못함
-    /*public String getPrefix(); //pex 사용
-    public String setPrefix(String prefix);
-    public String getSuffix(); //pex 사용
-    public void setSuffix(String suffix);
-    public String getTribe();
-    public String setTribe(String tribe);*/
+    private String prefix;
+    private String suffix;
+    private String tribe;
+
+    public String getPrefix() { return prefix; }
+    public String setPrefix(String prefix) {
+        this.prefix = prefix;
+        return this.prefix;
+    }
+
+    public String getSuffix() { return suffix; }
+    public void setSuffix(String suffix) { this.suffix = suffix; }
+    public String getTribe() { return tribe; }
+    public String setTribe(String tribe){
+        this.tribe = tribe;
+        return this.tribe;
+    }
 }
