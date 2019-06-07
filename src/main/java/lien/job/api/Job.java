@@ -2,10 +2,13 @@ package lien.job.api;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+
+import lien.job.api.requirement.JobRequirement;
 
 
 public abstract class Job 
@@ -23,7 +26,7 @@ public abstract class Job
 	public abstract void setDefaultStats(Map<Stat,Double> values);
 	public abstract List<ItemStack> getDefaultItems();
 	public abstract void addDefaultItems(ItemStack...itemStacks);
-	public abstract void setDefaultItems(List<ItemStack> itemstacks);
+	public abstract void setDefaultItemss(List<ItemStack> itemstacks);
 	public abstract Map<String,Object> serialize(); //Yamlconfiguration 에 저장할수있게
 	public abstract List<String> getPermission();
 	public abstract String getPrefix(); //pex 사용
@@ -32,4 +35,8 @@ public abstract class Job
 	public abstract void setSuffix(String suffix); 
 	public abstract String getTribe();
 	public abstract String setTribe(String tribe);
+	public abstract Set<JobRequirement> getRequirements();
+	public abstract void setRequirements(Set<JobRequirement> requirement);
+	public abstract void addRequirements(JobRequirement...jobRequirements);
+	public abstract boolean canGiveJob(Player player);
 }

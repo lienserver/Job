@@ -72,4 +72,19 @@ public class JobCommand
 	{
 		//1차직업선택 GUI를 열어줍니다
 	}
+	@Command("/직업 <job>")
+	public static void (CommandSender sender, String[] args, Job job)
+	{
+		
+	}
+	@Command("/직업 <job>")
+	public static void (CommandSender sender, String[] args, Job job)
+	{
+		
+	}
+	@Command("/직업 <job>")
+	public static void (CommandSender sender, String[] args, Job job)
+	{
+		
+	}
 }

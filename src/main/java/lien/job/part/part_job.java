@@ -24,19 +24,9 @@ public class part_job extends Job {
     public void giveJob(Player player){
         //give 'perm' to player
         //give items to player
-        if(this.DefaultStats != null){
-            for(Map.Entry<Stat,Double> entry : this.DefaultStats.entrySet()){
-                try{
-                    entry.getKey().getSetter().invoke( //널포인터 예외 위험이라고 IDEA가 말했따
-                            RpgAPI.getInstance().getPlayerCustomStatus(player),
-                            entry.getValue()
-                    );
-                }
-                catch (Exception e){
-                    e.printStackTrace();
-                }
-            }
-        }
+        if(this.DefaultStats != null)
+            for(Map.Entry<Stat,Double> entry : this.DefaultStats.entrySet())
+            	entry.getKey().set(player, entry.getKey().get(player) + entry.getValue());
     }
 
     public Location getSpawnLocation(){return spawn;}
