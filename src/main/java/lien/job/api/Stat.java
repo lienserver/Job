@@ -1,5 +1,33 @@
 package lien.job.api;
 
 public enum Stat {
-
+    WeaponDamage,
+    CriticalPercent,
+    CriticalDamage,
+    Piercing,
+    TakeDamage,
+    Defence,
+    Drain,
+    MaxHealth,
+    DodgePercent,
+    AccuraccyPercent,
+    FireElementIncrease,
+    WaterElementIncrease,
+    LightElementIncrease,
+    DarkElementIncrease,
+    FireElementProtect,
+    WaterElementProtect,
+    LightElementProtect,
+    DarkElementProtect,
+    AttackSpeed,
+    WalkSpeed,
+    ShieldReduction,
+    ExperienceBuff,
+    DropPercentBuff,
+    DamageScaleToNormal,
+    DamageScaleToNamed,
+    DamageScaleToBoss,
+    DamageScaleToPlayer,
+    HPRegen,
+    MPRegen
 }
