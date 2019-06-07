@@ -17,7 +17,7 @@ public abstract class Job
 	public abstract Location getTutorialLocation();
 	public abstract void setTutorialLocation(Location loc);
 	public abstract Job getParent();
-	public abstract void setParent();
+	public abstract void setParent(Job parent);
 	public abstract Map<Stat,Double> getDefaultStats();
 	public abstract void setDefaultStats(Stat stat, Double value);
 	public abstract void setDefaultStats(Map<Stat,Double> values);
