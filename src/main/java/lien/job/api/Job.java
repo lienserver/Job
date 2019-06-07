@@ -28,7 +28,7 @@ public abstract class Job
 	public abstract void setDefaultStats(Map<Stat,Double> values);
 	public abstract List<ItemStack> getDefaultItems();
 	public abstract void addDefaultItems(ItemStack...itemStacks);
-	public abstract void setDefaultItemss(List<ItemStack> itemstacks);
+	public abstract void setDefaultItems(List<ItemStack> itemstacks);
 	public abstract Map<String,Object> serialize(); //Yamlconfiguration 에 저장할수있게
 	public abstract List<String> getPermission();
 	public abstract String getPrefix(); //pex 사용
