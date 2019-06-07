@@ -52,6 +52,10 @@ public enum Stat {
     public String getMethodName(){
         return this.methodName;
     }
+    public String getLocalizedName()
+    {
+    	return this.localizedName;
+    }
 
     public Method getSetter(){
         try{
@@ -88,5 +92,12 @@ public enum Stat {
     		getSetter().invoke(	RpgAPI.getInstance().getPlayerCustomStatus(player),val);		
     	}
     	catch (Exception e){ e.printStackTrace();}
+    }
+    public static Stat getByLocalizedName(String name)
+    {
+    	for(Stat st:values())
+    		if(st.getLocalizedName() != null && st.getLocalizedName().equals(name))
+    			return st;
+    	return null;
     }
 }

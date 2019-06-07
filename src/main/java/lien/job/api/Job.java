@@ -8,12 +8,14 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import lien.job.api.cost.JobCost;
 import lien.job.api.requirement.JobRequirement;
 
 
 public abstract class Job 
 {
 	public Job(Map<String,Object> serial){}
+	public abstract String getName();
 	public abstract void giveJob(Player player);
 	public abstract Location getSpawnLocation();
 	public abstract void setSpawnLocation(Location loc);
@@ -35,6 +37,9 @@ public abstract class Job
 	public abstract void setSuffix(String suffix); 
 	public abstract String getTribe();
 	public abstract String setTribe(String tribe);
+	public abstract Set<JobCost> getCosts();
+	public abstract void setCosts(Set<JobCost> cost);
+	public abstract void addCosts(JobCost...jobCost);
 	public abstract Set<JobRequirement> getRequirements();
 	public abstract void setRequirements(Set<JobRequirement> requirement);
 	public abstract void addRequirements(JobRequirement...jobRequirements);
