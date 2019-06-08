@@ -77,19 +77,22 @@ public enum Stat {
         }
         return null;
     }
+
     public double get(Player player)
     {
     	try
     	{	
-    		getGetter().invoke(	RpgAPI.getInstance().getPlayerCustomStatus(player));		
+    		return (double) getGetter().invoke(RpgAPI.getInstance().getPlayerCustomStatus(player)); //널포인터 예외 위험 feat.IDEA
     	}
     	catch (Exception e){ e.printStackTrace();}
+    	return 1;
     }
+
     public void set(Player player, double val)
     {
     	try
-    	{	
-    		getSetter().invoke(	RpgAPI.getInstance().getPlayerCustomStatus(player),val);		
+    	{
+    		getSetter().invoke(	RpgAPI.getInstance().getPlayerCustomStatus(player),val); //널포인터 예외 위험 feat.IDEA
     	}
     	catch (Exception e){ e.printStackTrace();}
     }
