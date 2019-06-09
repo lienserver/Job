@@ -37,9 +37,10 @@ public class part_job extends Job {
     public void giveJob(Player player){
         //give 'perm' to player
         //give items to player
-        if(this.DefaultStats != null)
+        if(this.DefaultStats != null){
             for(Map.Entry<Stat,Double> entry : this.DefaultStats.entrySet())
-            	entry.getKey().set(player, entry.getKey().get(player) + entry.getValue());
+                entry.getKey().set(player, entry.getKey().get(player) + entry.getValue());
+        }
     }
 
     public Location getSpawnLocation(){return spawn;}
@@ -110,15 +111,11 @@ public class part_job extends Job {
 
 
 
+    private Set<JobCost> cost = new HashSet<>();
+    public Set<JobCost> getCosts(){ return cost; }
+    public void setCosts(Set<JobCost> cost){ this.cost = cost; }
+    public void addCosts(JobCost...jobCost){ cost.addAll(Arrays.asList(jobCost)); }
 
-    //잡코스트가 뭔지 모루겟소요
-    public Set<JobCost> getCosts(){
-        return null;
-    }
-    public void setCosts(Set<JobCost> cost){
-    }
-    public void addCosts(JobCost...jobCost){
-    }
 
 
     private Set<JobRequirement> requirements = new HashSet<>();

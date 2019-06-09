@@ -8,57 +8,55 @@ import lien.job.api.Stat;
 
 public class JobCommand 
 {
+    //notice 나중에 커맨드 처리하는거 제대로 가져올게요
+
 	@Command("/직업 <int>")
 	public static void help(CommandSender sender, String[] args,int page)
 	{
-		if(page == 1)
-		{
-			sender.sendMessage("/직업 - 직업플러그인의 명령어를 봅니다");
-			sender.sendMessage("/직업생성 <이름> // 직업을 생성합니다");
-			sender.sendMessage("/직업삭제 <이름> // 직업을 삭제합니다");
-			sender.sendMessage("/직업정보 <직업> // 전직의 정보를봅니다");
-			sender.sendMessage("[도움말 1/5]");
-			
+		//switch를 써야 간지가 남
+		switch (page){
+			case 1:
+				sender.sendMessage("/직업 - 직업플러그인의 명령어를 봅니다");
+				sender.sendMessage("/직업생성 <이름> // 직업을 생성합니다");
+				sender.sendMessage("/직업삭제 <이름> // 직업을 삭제합니다");
+				sender.sendMessage("/직업정보 <직업> // 전직의 정보를봅니다");
+				sender.sendMessage("[도움말 1/5]");
+				break;
+			case 2:
+				sender.sendMessage("/직업노드추가 <직업> <노드> // 노드를 추가합니다");
+				sender.sendMessage("/직업노드삭제 <직업> <노드> // 노드를 삭제합니다");
+				sender.sendMessage("/직업칭호설정 <직업> <칭호> // 칭호를  설정합니다");
+				sender.sendMessage("/직업종족설정 <직업> <종족> // 종족을 설정합니다");
+				sender.sendMessage("[도움말 2/5]");
+				break;
+			case 3:
+				sender.sendMessage("/직업스텟설정 <직업> <능력치> <값> //기본능력치를 설정합니다");
+				sender.sendMessage("/직업스텟삭제 <직업> <능력치> // 기본능력치를 삭제합니다");
+				sender.sendMessage(" ");
+				StringBuilder statm = new StringBuilder();
+				for(Stat stat : Stat.values())
+					statm.append(stat.getLocalizedName()).append(" ");
+				sender.sendMessage(statm.toString());
+				sender.sendMessage("[도움말 3/5]");
+				break;
+			case 4:
+				sender.sendMessage("/직업스폰설정 <이름> // 스폰위치를 서있는곳으로 설정");
+				sender.sendMessage("/직업튜토리얼설정 <이름> // 튜토리얼 시작위치를 서있는곳으로 설정");
+				sender.sendMessage("/직업튜토리얼끝 // 직업선택창이 뜸");
+				sender.sendMessage("/직업전직레벨 <이름> <레벨값> // 레벨제한을 겁니다");
+				sender.sendMessage("/직업전직하기설정 <이름> <노드> // 노드제한을 겁니다");
+				sender.sendMessage("[도움말 4/5]");
+				break;
+			case 5:
+				sender.sendMessage("/직업gui설정 <이름> <gui칸번호> //gui를 설정합니다");
+				sender.sendMessage("/직업gui설정 전직조건아이템 <이름> //전직필요아이템을 넣는 gui를 엽니다");
+				sender.sendMessage("/직업gui설정 로어 <이름> <설명글> //ㅈㄱㄴ");
+				sender.sendMessage("/직업gui설정 로어del <이름> <줄수> // ㅈㄱㄴ");
+				sender.sendMessage("[도움말 5/5]");
+				break;
 		}
-		else if(page == 2)
-		{
-			sender.sendMessage("/직업노드추가 <직업> <노드> // 노드를 추가합니다");
-			sender.sendMessage("/직업노드삭제 <직업> <노드> // 노드를 삭제합니다");
-			sender.sendMessage("/직업칭호설정 <직업> <칭호> // 칭호를  설정합니다");
-			sender.sendMessage("/직업종족설정 <직업> <종족> // 종족을 설정합니다");
-			
-			sender.sendMessage("[도움말 2/5]");
-		}
-		else if(page == 3)
-		{
-			sender.sendMessage("/직업스텟설정 <직업> <능력치> <값> //기본능력치를 설정합니다");
-			sender.sendMessage("/직업스텟삭제 <직업> <능력치> // 기본능력치를 삭제합니다");
-			sender.sendMessage(" ");
-			StringBuilder statm = new StringBuilder();
-			for(Stat stat : Stat.values())
-				statm.append(stat.getLocalizedName()).append(" ");
-			sender.sendMessage(statm.toString());
-			sender.sendMessage("[도움말 3/5]");
-		}
-		else if(page == 4)
-		{
-			sender.sendMessage("/직업스폰설정 <이름> // 스폰위치를 서있는곳으로 설정");
-			sender.sendMessage("/직업튜토리얼설정 <이름> // 튜토리얼 시작위치를 서있는곳으로 설정");
-			sender.sendMessage("/직업튜토리얼끝 // 직업선택창이 뜸");
-			sender.sendMessage("/직업전직레벨 <이름> <레벨값> // 레벨제한을 겁니다");
-			sender.sendMessage("/직업전직하기설정 <이름> <노드> // 노드제한을 겁니다");
-			sender.sendMessage("[도움말 4/5]");
-		}
-		else if(page == 5)
-		{
-			sender.sendMessage("/직업gui설정 <이름> <gui칸번호> //gui를 설정합니다");
-			sender.sendMessage("/직업gui설정 전직조건아이템 <이름> //전직필요아이템을 넣는 gui를 엽니다");
-			sender.sendMessage("/직업gui설정 로어 <이름> <설명글> //ㅈㄱㄴ");
-			sender.sendMessage("/직업gui설정 로어del <이름> <줄수> // ㅈㄱㄴ");
-			sender.sendMessage("[도움말 5/5]");
-		}
-
 	}
+
 	@Command("/직업")
 	public static void help(CommandSender sender, String[] args)
 	{
@@ -89,7 +87,6 @@ public class JobCommand
 			job.setParent(parent);
 			sender.sendMessage(job.getName() + "직업의 부모는 " + parent.getName() + "가 되었습니다");
 		}
-		
 	}	
 	@Command("/직업노드추가 <job> <string>")
 	public static void addpermission(CommandSender sender, String[] args, Job job, String node)

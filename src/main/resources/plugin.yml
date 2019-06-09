@@ -1,3 +1,6 @@
 name: Job
 version: ${project.version}
 main: lien.job.Job
+
+depend:
+- RpgRemakeAPI
