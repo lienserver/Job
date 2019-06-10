@@ -3,4 +3,28 @@ version: ${project.version}
 main: lien.job.Job
 
 depend:
-- RpgRemakeAPI
+  - RpgRemakeAPI
+
+commands:
+  job:
+
+permissions:
+  jobp.*:
+    description: permissions to access job plugin
+    children:
+      jobp.createjob: true
+      jobp.managejob: true
+      jobp.switchjob: true
+      jobp.manageuser: true
+  jobp.createjob:
+    description: permission to create and delete job
+    default: op
+  jobp.managejob:
+    description: permission to access job config
+    default: op
+  jobp.switchjob:
+    description: permission to switch job without job requirements
+    default: op
+  jobp.manageuser:
+    description: permission to switch other user's job
+    default: op
