@@ -3,8 +3,13 @@ package lien.job.command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import com.gnurung.gunucommandmodule.Command;
+
 import lien.job.api.Job;
 import lien.job.api.Stat;
+import lien.job.api.requirement.JobRequirement;
+import lien.job.api.requirement.LevelRequirement;
+import lien.job.api.requirement.PermissionRequirement;
 
 public class JobCommand 
 {
@@ -170,5 +175,33 @@ public class JobCommand
 	public static void removelore(CommandSender sender, String[] args, Job job)
 	{
 		
+	}
+	@Command("/직업전직레벨 <job> <int>")
+	public static void removelore(CommandSender sender, String[] args, Job job,int level)
+	{
+		for(JobRequirement req : job.getRequirements())
+		{
+			if(req instanceof LevelRequirement)
+			{
+				job.getRequirements().remove(req);
+				break;
+			}
+		}
+		job.addRequirements(new LevelRequirement(level));
+		sender.sendMessage("필요레벨이 설정되었습니다");
+	}
+	@Command("/직업전직하기설정 <job> <string>")
+	public static void removelore(CommandSender sender, String[] args, Job job,String node)
+	{
+		for(JobRequirement req : job.getRequirements())
+		{
+			if(req instanceof PermissionRequirement)
+			{
+				job.getRequirements().remove(req);
+				break;
+			}
+		}
+		job.addRequirements(new PermissionRequirement(node));
+		sender.sendMessage("필요 노드가 설정되었습니다");
 	}
 }
