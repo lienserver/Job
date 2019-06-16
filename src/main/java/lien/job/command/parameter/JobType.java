@@ -10,7 +10,7 @@ public class JobType implements ParameterType
 	public String regex(Object sender, String s)
 	{
 		if(JobPl.getInstance().getJob(s) == null) return "($^)";
-		else return "("+s+")";
+		else return "(["+s+"])";
 	}
 	@Override
 	public Object getObject(Object sender, String s)

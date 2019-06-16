@@ -2,6 +2,8 @@ package lien.job;
 
 import lien.job.api.Job;
 import lien.job.command.JobCommand;
+import lien.job.command.parameter.JobType;
+import lien.job.command.parameter.StatType;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -22,6 +24,8 @@ public final class JobPl extends JavaPlugin {
     @Override
     public void onEnable() {
         commandprocesser = new CommandProcesser(JobCommand.class);
+        commandprocesser.addParameter(new JobType());
+        commandprocesser.addParameter(new StatType());
         inst = this;
     }
 

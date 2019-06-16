@@ -23,7 +23,7 @@ public class StatType implements ParameterType
 	public String regex(Object arg0, String arg1) 
 	{
 		if(Stat.getByLocalizedName(arg1) == null) return "$^";
-		else return arg1;
+		else return "(["+arg1+"])";
 	}
 
 }
