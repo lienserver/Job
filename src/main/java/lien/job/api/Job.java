@@ -14,7 +14,16 @@ import lien.job.api.requirement.JobRequirement;
 
 public abstract class Job 
 {
-	public Job(Map<String,Object> serial){}
+	public Job(Map<String,Object> serial){
+		for(Map.Entry<String,Object> ser : serial.entrySet()){
+			try{
+				this.getClass().getDeclaredField(ser.getKey()).set(this, ser.getValue());
+			}
+			catch (Exception e){
+				e.printStackTrace();
+			}
+		}
+	}
 	public abstract String getName();
 	public abstract void giveJob(Player player);
 	public abstract Location getSpawnLocation();

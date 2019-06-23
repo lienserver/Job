@@ -1,5 +1,7 @@
 package lien.job.command;
 
+import lien.job.JobPl;
+import lien.job.part.JobFactory;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -70,7 +72,9 @@ public class JobCommand
 	@Command("/직업생성 <string><job>!")//(?!<job>)<string>
 	public static void create(CommandSender sender, String[] args, String job)
 	{
-		
+		JobPl.getInstance().addJob(JobFactory.createBasic(job)); //TODO
+		sender.sendMessage("Create job " + job);
+		return;
 	}
 	@Command("/직업정보 <job>")
 	public static void information(CommandSender sender, String[] args, Job job)
