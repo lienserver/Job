@@ -10,6 +10,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import com.gnurung.gunugui.api.Item;
 import com.gnurung.gunugui.bukkit.BukkitItem;
 import com.gnurung.gunugui.bukkit.ChestInventoryGUI;
+import com.gnurung.gunugui.bukkit.client.PlayerClient;
 import com.gnurung.gunugui.bukkit.event.gui.GUIClickEvent;
 
 import lien.job.JobPl;
@@ -20,6 +21,7 @@ public class JobSelectGUI extends ChestInventoryGUI implements GUIClickEvent
 	private static int[] jobSlots = new int[] {1,2,3,4}; //...
 	private List<JobSelectButton> jobList = new ArrayList<JobSelectButton>();
 	private final Job parent;
+	private final Player player;
 	public JobSelectGUI(Player p) 
 	{
 		super(JobPl.getInstance(), "전직하기", 3);
@@ -41,6 +43,10 @@ public class JobSelectGUI extends ChestInventoryGUI implements GUIClickEvent
 			setItemInInventory((BukkitItem) item, slot);
 	}
 
+	public void open()
+	{
+		super.openGUI(PlayerClient.getPlayerClient(this.player));
+	}
 	@Override
 	public Item getItem(int slot)
 	{

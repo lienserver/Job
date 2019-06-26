@@ -2,16 +2,25 @@ package lien.job.command;
 
 import lien.job.JobPl;
 import lien.job.part.JobFactory;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import com.gnurung.gunucommandmodule.Command;
 
 import lien.job.api.Job;
 import lien.job.api.Stat;
+import lien.job.api.requirement.ItemStackRequirement;
 import lien.job.api.requirement.JobRequirement;
 import lien.job.api.requirement.LevelRequirement;
 import lien.job.api.requirement.PermissionRequirement;
+import lien.job.gui.JobSelectGUI;
 
 public class JobCommand 
 {
@@ -156,32 +165,55 @@ public class JobCommand
 		sender.sendMessage("튜토리얼 스폰이 설정되었습니다");
 	}
 	@Command("/직업튜토리얼끝 <job>")
-	public static void endtutorial(CommandSender sender, String[] args, Job job)
+	public static void endtutorial(Player sender, String[] args, Job job)
 	{
-		//1차직업선택 GUI를 열어줍니다
+		new JobSelectGUI(sender).open();
 	}
 	@Command("/직업(gui|GUI)설정 <job> <int>")
 	public static void setGui(CommandSender sender, String[] args, Job job, int slot)
 	{
-		
+		job.setGUISlot(slot);
+		sender.sendMessage("직업 GUI 슬롯이 설정되었습니다");
 	}
-	@Command("/직업gui설정 전직조건아이템 <job>")
-	public static void upgradeRequiredItem(CommandSender sender, String[] args, Job job)
+	@Command("/직업(gui|GUI)설정 전직조건아이템 <job>")
+	public static void upgradeRequiredItem(Player sender, String[] args, Job job)
 	{
-		
+		ItemStack item = sender.getInventory().getItemInMainHand();
+		if(item != null && item.getType() != Material.AIR)
+		{
+			JobRequirement req = new ItemStackRequirement(item);
+			job.addRequirements(req);
+			sender.sendMessage("직업 전직을 위해 필요한 아이템이 설정되었습니다");
+		}
+		else
+			sender.sendMessage("손에 아이템을 들어야합니다");
 	}
-	@Command("/직업 로어 <job> <string*>")
-	public static void setlore(CommandSender sender, String[] args, Job job)
+	@Command("/직업 로어 <string*>")
+	public static void setlore(CommandSender sender, String[] args, Job job,String str)
 	{
-		
+		ItemStack item = job.getJobIcon();
+		ItemMeta im = item.getItemMeta();
+		List<String> lore = im.hasLore() ? im.getLore() : new ArrayList<>();
+		lore.add(str);
+		im.setLore(lore);
+		item.setItemMeta(im);
+		job.setJobIcon(item);
+		sender.sendMessage("로어를 추가했습니다");
 	}
 	@Command("/직업 로어del <job> <int>")
-	public static void removelore(CommandSender sender, String[] args, Job job)
+	public static void removelore(CommandSender sender, String[] args, Job job,int i)
 	{
-		
+		ItemStack item = job.getJobIcon();
+		ItemMeta im = item.getItemMeta();
+		List<String> lore = im.hasLore() ? im.getLore() : new ArrayList<>();
+		lore.remove(i);
+		im.setLore(lore);
+		item.setItemMeta(im);
+		job.setJobIcon(item);
+		sender.sendMessage("로어를 설정했습니다");
 	}
 	@Command("/직업전직레벨 <job> <int>")
-	public static void removelore(CommandSender sender, String[] args, Job job,int level)
+	public static void setminlv(CommandSender sender, String[] args, Job job,int level)
 	{
 		for(JobRequirement req : job.getRequirements())
 		{
