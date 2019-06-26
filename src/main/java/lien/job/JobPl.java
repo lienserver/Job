@@ -11,6 +11,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import com.gnurung.gunucommandmodule.module.CommandProcesser;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,6 +43,11 @@ public final class JobPl extends JavaPlugin {
 
     public Job getJob(String name){
         return jobMap.get(name);
+    }
+    
+    public Collection<Job> getJobs()
+    {
+    	return jobMap.values();
     }
     
     @Override

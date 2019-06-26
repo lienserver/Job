@@ -25,6 +25,7 @@ public abstract class Job
 		}
 	}
 	public abstract String getName();
+	public abstract ItemStack getJobIcon();
 	public abstract void giveJob(Player player);
 	public abstract Location getSpawnLocation();
 	public abstract void setSpawnLocation(Location loc);
