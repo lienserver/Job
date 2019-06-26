@@ -18,19 +18,18 @@ import lien.job.api.Job;
 
 public class JobSelectGUI extends ChestInventoryGUI implements GUIClickEvent
 {
-	private static int[] jobSlots = new int[] {1,2,3,4}; //...
 	private List<JobSelectButton> jobList = new ArrayList<JobSelectButton>();
 	private final Job parent;
 	private final Player player;
 	public JobSelectGUI(Player p) 
 	{
 		super(JobPl.getInstance(), "전직하기", 3);
-		parent = ;
+		parent = ; //플레이어 현재 직업 구하는거 만들어주세요
 		for(Job job : JobPl.getInstance().getJobs())
 			if((parent == null && parent == job) || parent.equals(parent))
 			{
 				JobSelectButton jsb = new JobSelectButton(job);
-				setItem(jobSlots[jobList.size()], jsb);
+				setItem(job.getGUISlot(), jsb);
 				jobList.add(jsb);
 			}
 		
@@ -50,8 +49,8 @@ public class JobSelectGUI extends ChestInventoryGUI implements GUIClickEvent
 	@Override
 	public Item getItem(int slot)
 	{
-		for(int i = 0; i < jobSlots.length; i++)
-			if(jobSlots[i] == slot)
+		for(int i = 0; i < jobList.size(); i++)
+			if(jobList.get(i).getJob().getGUISlot() == slot)
 				return jobList.get(i);
 		return null;
 	}

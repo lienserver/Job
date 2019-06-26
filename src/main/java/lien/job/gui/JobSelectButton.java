@@ -39,5 +39,9 @@ public class JobSelectButton extends BukkitItem implements ItemClickEvent
 		
 		
 	}
+	public Job getJob()
+	{
+		return job;
+	}
 
 }
